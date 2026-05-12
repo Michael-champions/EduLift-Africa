@@ -36,12 +36,23 @@ const contactSuccess = document.querySelector('.contact-success');
 
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
+        // Prevent endless fallback loop
+        if (contactForm.dataset.fallback === 'true') {
+            return;
+        }
+
         e.preventDefault();
 
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
         const endpoint = contactForm.action;
         const formData = new FormData(contactForm);
+
+        // Ensure Formsubmit receives a reply-to address
+        const emailValue = formData.get('email');
+        if (emailValue) {
+            formData.set('_replyto', emailValue);
+        }
 
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
@@ -68,9 +79,10 @@ if (contactForm) {
                 contactSuccess.textContent = '';
             }, 8000);
         } catch (error) {
-            contactSuccess.textContent = 'Something went wrong. Please email us directly at immichaelattah@gmail.com.';
-            contactSuccess.classList.add('visible');
             console.error(error);
+            // Fallback to default form submission if AJAX fails
+            contactForm.dataset.fallback = 'true';
+            contactForm.submit();
         } finally {
             submitButton.disabled = false;
             submitButton.textContent = originalText;
