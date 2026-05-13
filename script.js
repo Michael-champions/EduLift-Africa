@@ -1,9 +1,9 @@
 // ==================== SMOOTH SCROLLING & NAV ==================== 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
+            e.preventDefault();
             target.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
@@ -14,12 +14,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // ==================== CONTACT FORM FUNCTIONS ====================
 function scrollToContactWithReason(reason) {
-    // Scroll to contact section
     const contactSection = document.querySelector('#contact');
     if (contactSection) {
         contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        
-        // Pre-select the radio button after a short delay to ensure the form is visible
         setTimeout(() => {
             const radioButton = document.querySelector(`input[name="reason"][value="${reason}"]`);
             if (radioButton) {
@@ -27,6 +24,8 @@ function scrollToContactWithReason(reason) {
                 radioButton.focus();
             }
         }, 500);
+    } else {
+        window.location.href = `impact.html#contact`;
     }
 }
 
