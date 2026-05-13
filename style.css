@@ -2758,8 +2758,26 @@ body {
         gap: 40px;
     }
     
+    .letter-image {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .letter-image img {
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    .letter-text-wrapper {
+        position: static;
+    }
+    
     .letter-text {
         padding: 30px 20px;
+        clear: both;
     }
     
     .letter-text p {
@@ -2772,10 +2790,11 @@ body {
     }
     
     .letter-quote {
-        float: none;
-        width: 100%;
+        float: none !important;
+        width: 100% !important;
         padding: 30px 20px;
         margin: 0 0 30px 0;
+        clear: both;
     }
     
     .letter-quote blockquote {
@@ -2839,6 +2858,74 @@ body {
 
     .page-links .btn {
         width: fit-content;
+    }
+}
+
+@media (max-width: 480px) {
+    .founder-letter {
+        padding: 60px 0;
+    }
+    
+    .letter-header {
+        margin-bottom: 30px;
+    }
+    
+    .letter-icon {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+    
+    .founder-letter h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+    
+    .letter-subtitle {
+        font-size: 16px;
+    }
+    
+    .letter-body {
+        gap: 30px;
+    }
+    
+    .letter-image img {
+        max-width: 250px;
+    }
+    
+    .letter-text {
+        padding: 25px 15px;
+    }
+    
+    .letter-text p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
+    .greeting {
+        font-size: 18px;
+        margin-bottom: 15px !important;
+    }
+    
+    .letter-quote {
+        padding: 25px 15px;
+        margin: 0 0 20px 0;
+    }
+    
+    .letter-quote blockquote {
+        font-size: 18px;
+    }
+    
+    .letter-quote blockquote:before {
+        font-size: 30px;
+        top: -10px;
+    }
+    
+    .letter-quote cite {
+        font-size: 14px;
+    }
+    
+    .quote-note {
+        font-size: 14px;
     }
 }
 
